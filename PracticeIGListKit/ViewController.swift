@@ -1,3 +1,5 @@
+
+
 //
 //  ViewController.swift
 //  PracticeIGListKit
@@ -10,8 +12,13 @@ import IGListKit
 
 class ViewController: UIViewController,ListAdapterDataSource {
     var data = [ListDiffable]()
-    let collectionView = UICollectionView(frame: .zero, collectionViewLayout: UICollectionViewFlowLayout())
-    lazy var adapter:ListAdapter =  {return ListAdapter(updater: ListAdapterUpdater(), viewController: self)}()
+    let flowLayout: UICollectionViewFlowLayout = {
+        let layout = UICollectionViewFlowLayout()
+        layout.scrollDirection = .horizontal
+        return layout
+    }()
+    var collectionView:UICollectionView!
+    lazy var adapter:ListAdapter =  {return ListAdapter(updater: ListAdapterUpdater(), viewController: self,workingRangeSize: 1)}()
     
     func objects(for listAdapter: ListAdapter) -> [ListDiffable] {
         return data
@@ -26,20 +33,32 @@ class ViewController: UIViewController,ListAdapterDataSource {
     }
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
-        collectionView.frame = view.bounds
+        collectionView.frame = CGRect(x: 0, y: 100, width: view.bounds.width, height: 100)
+//        collectionView.frame = view.bounds
     }
 
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
+        let collectionViewFlowLayout = UICollectionViewFlowLayout()
+        collectionViewFlowLayout.scrollDirection = .horizontal
+        collectionView = UICollectionView(frame: .zero, collectionViewLayout: collectionViewFlowLayout)
         data.append(Post(username: "a", timestamp: "b", image: UIImage(systemName: "square.and.arrow.up")!, likes: 111, comments: [Comment(username: "a", text: "s"),Comment(username: "d", text: "q")]))
         collectionView.backgroundColor = .red
+        collectionView.contentInset = UIEdgeInsets(top: 0, left: 100, bottom: 0, right: 90)
+        
         view.addSubview(collectionView)
         adapter.collectionView = collectionView
         adapter.dataSource = self
+        a.backgroundColor = .white
+    
+//        view.addSubview(a)
+//        a.addTarget(self, action: #selector(next2), for: UIControl.Event.touchUpInside)
     }
-
-
+    var a = UIButton(frame: CGRect(x: 100, y: 100, width: 300, height: 300))
+    @objc func next2(){
+        self.present(ViewController2(), animated: true, completion: nil)
+    }
 }
 
 
@@ -142,13 +161,21 @@ final class PostSectionController :ListBindingSectionController<Post>,ListBindin
     func sectionController(_ sectionController: ListBindingSectionController<ListDiffable>, cellForViewModel viewModel: Any, at index: Int) -> UICollectionViewCell & ListBindable {
         switch viewModel {
         case is UserViewModel:
-            return collectionContext!.dequeueReusableCell(of: UserCell.self, for: self, at: index) as! UserCell
+            let cell = collectionContext!.dequeueReusableCell(of: UserCell.self, for: self, at: index) as! UserCell
+            cell.backgroundColor = .blue
+            return cell
         case is ImageViewModel:
-            return collectionContext!.dequeueReusableCell(of: ImageCell.self, for: self, at: index) as! ImageCell
+            let cell2 = collectionContext!.dequeueReusableCell(of: ImageCell.self, for: self, at: index) as! ImageCell
+            cell2.backgroundColor = .gray
+            return cell2
         case is ActionViewModel:
-            return collectionContext!.dequeueReusableCell(of: ActionCell.self, for: self, at: index) as! ActionCell
+            let cell3 = collectionContext!.dequeueReusableCell(of: ActionCell.self, for: self, at: index) as! ActionCell
+            cell3.backgroundColor = .yellow
+            return cell3
         case is Comment:
-            return collectionContext!.dequeueReusableCell(of: CommentCell.self, for: self, at: index) as! CommentCell
+            let cell4 = collectionContext!.dequeueReusableCell(of: CommentCell.self, for: self, at: index) as! CommentCell
+            cell4.backgroundColor = .orange
+            return cell4
         default:
             fatalError()
         }
@@ -157,6 +184,7 @@ final class PostSectionController :ListBindingSectionController<Post>,ListBindin
     override init() {
         super.init()
         dataSource = self
+        self.inset = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 10)
     }
     func sectionController(_ sectionController: ListBindingSectionController<ListDiffable>, viewModelsFor object: Any) -> [ListDiffable] {
         guard let object = object as? Post else { fatalError() }
@@ -173,15 +201,20 @@ final class PostSectionController :ListBindingSectionController<Post>,ListBindin
     func sectionController(_ sectionController: ListBindingSectionController<ListDiffable>, sizeForViewModel viewModel: Any, at index: Int) -> CGSize {
         // 1
          guard let width = collectionContext?.containerSize.width else { fatalError() }
+        print(width)
          // 2
-         let height: CGFloat
-         switch viewModel {
-         case is ImageViewModel: height = 250
-         case is Comment: height = 35
-         // 3
-         default: height = 55
-         }
-         return CGSize(width: width, height: height)
+//         let height: CGFloat
+//         switch viewModel {
+//         case is ImageViewModel:
+//            height = 100
+//            return CGSize(width: width, height: height)
+//         case is Comment: height = 35
+//            return CGSize(width: width, height: height)
+//         // 3
+//         default: height = 55
+//            return CGSize(width: width, height: height)
+//         }
+        return CGSize(width: 200, height: 100)
     }
     
 }
@@ -193,7 +226,16 @@ final class ImageCell:UICollectionViewCell,ListBindable{
     func bindViewModel(_ viewModel: Any) {
         guard let viewModel = viewModel as? ImageViewModel else { return }
         imageView = viewModel.image
+        usernameLabel.text = "s"
+        usernameLabel.backgroundColor = .green
+        dateLabel.backgroundColor = .link
+        dateLabel.text = "s"
+        self.addSubview(usernameLabel)
+        self.addSubview(dateLabel)
     }
+    var usernameLabel = UILabel(frame: CGRect(x: 0, y: 0, width: 100, height: 100))
+    var dateLabel = UILabel(frame: CGRect(x: 0, y: 0, width: 100, height: 100))
+
     
 }
 
@@ -212,16 +254,10 @@ final class CommentCell: UICollectionViewCell,ListBindable{
 }
 
 final class UserCell:UICollectionViewCell, ListBindable{
-    var usernameLabel = UILabel(frame: CGRect(x: 0, y: 0, width: 400, height: 400))
-    var dateLabel = UILabel(frame: CGRect(x: 0, y: 0, width: 400, height: 400))
     func bindViewModel(_ viewModel: Any) {
         guard let viewModel = viewModel as? UserViewModel else {
             return
         }
-        usernameLabel.text = viewModel.username
-        dateLabel.text = viewModel.timestamp
-        self.addSubview(usernameLabel)
-        self.addSubview(dateLabel)
     }
 }
 
