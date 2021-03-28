@@ -16,6 +16,7 @@
 		0F00640F260EB9E200EC29A2 /* ViewController2.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F00640E260EB9E200EC29A2 /* ViewController2.swift */; };
 		0F006412260EDA4000EC29A2 /* UIViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F006411260EDA4000EC29A2 /* UIViewController.swift */; };
 		0F006415260EE12E00EC29A2 /* TryKitViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F006414260EE12E00EC29A2 /* TryKitViewController.swift */; };
+		0FCCA0C52610A81F00874EDF /* ViewController3.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FCCA0C42610A81F00874EDF /* ViewController3.swift */; };
 		4EA806443AE69450CCCF1DC9 /* Pods_PracticeIGListKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AE6EEDDF28F7E39D0E5351A7 /* Pods_PracticeIGListKit.framework */; };
 /* End PBXBuildFile section */
 
@@ -32,6 +33,7 @@
 		0F00640E260EB9E200EC29A2 /* ViewController2.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController2.swift; sourceTree = "<group>"; };
 		0F006411260EDA4000EC29A2 /* UIViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIViewController.swift; sourceTree = "<group>"; };
 		0F006414260EE12E00EC29A2 /* TryKitViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TryKitViewController.swift; sourceTree = "<group>"; };
+		0FCCA0C42610A81F00874EDF /* ViewController3.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController3.swift; sourceTree = "<group>"; };
 		6BA8755E508A61F17BE8FBF2 /* Pods-PracticeIGListKit.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PracticeIGListKit.release.xcconfig"; path = "Target Support Files/Pods-PracticeIGListKit/Pods-PracticeIGListKit.release.xcconfig"; sourceTree = "<group>"; };
 		AE6EEDDF28F7E39D0E5351A7 /* Pods_PracticeIGListKit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_PracticeIGListKit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -79,6 +81,7 @@
 				0F00640E260EB9E200EC29A2 /* ViewController2.swift */,
 				0F006411260EDA4000EC29A2 /* UIViewController.swift */,
 				0F006414260EE12E00EC29A2 /* TryKitViewController.swift */,
+				0FCCA0C42610A81F00874EDF /* ViewController3.swift */,
 			);
 			path = PracticeIGListKit;
 			sourceTree = "<group>";
@@ -219,6 +222,7 @@
 				0F0063F5260792E300EC29A2 /* AppDelegate.swift in Sources */,
 				0F0063F7260792E300EC29A2 /* SceneDelegate.swift in Sources */,
 				0F006412260EDA4000EC29A2 /* UIViewController.swift in Sources */,
+				0FCCA0C52610A81F00874EDF /* ViewController3.swift in Sources */,
 				0F006415260EE12E00EC29A2 /* TryKitViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
