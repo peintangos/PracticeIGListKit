@@ -8,7 +8,17 @@
 import UIKit
 import IGListKit
 
-class TryKitViewController: UIViewController,ListAdapterDataSource {
+class TryKitViewController: UIViewController,ListAdapterDataSource,UICollectionViewDataSource {
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        return 1
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "cell", for: indexPath as IndexPath)
+        cell.backgroundColor = UIColor.blue
+        return cell
+    }
+    
     var data = [ListDiffable]()
     let flowLayout: UICollectionViewFlowLayout = {
         let layout = UICollectionViewFlowLayout()
@@ -31,7 +41,7 @@ class TryKitViewController: UIViewController,ListAdapterDataSource {
     }
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
-        collectionView.frame = CGRect(x: 0, y: 0, width: 700, height: 300)
+        collectionView.frame = CGRect(x: 0, y: 0, width: view.bounds.width, height: 200)
     }
 
     override func viewDidLoad() {
@@ -42,11 +52,17 @@ class TryKitViewController: UIViewController,ListAdapterDataSource {
         collectionView = UICollectionView(frame: .zero, collectionViewLayout: collectionViewFlowLayout)
         data.append(Post2(comments: [Comment2(username: "a", text: "aa"),Comment2(username: "aaa", text: "aa"),]))
         collectionView.backgroundColor = .red
-//        collectionView.contentInset = UIEdgeInsets(top: 0, left: 100, bottom: 0, right: 90)
+        collectionView.contentInset = UIEdgeInsets(top: 10, left: 10, bottom: 10, right: 10)
         
         view.addSubview(collectionView)
         adapter.collectionView = collectionView
         adapter.dataSource = self
+        
+        let layout = UICollectionViewFlowLayout()
+        layout.itemSize = CGSize(width: 300, height: 50)
+        let colletionView2 = UICollectionView(frame: CGRect(x: 0, y: 400, width: 500, height: 500), collectionViewLayout: layout)
+        colletionView2.backgroundColor = .yellow
+        view.addSubview(colletionView2)
     }
 }
 
@@ -98,7 +114,7 @@ final class Post2SectionController :ListBindingSectionController<Post2>,ListBind
     override init() {
         super.init()
         dataSource = self
-        self.inset = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 10)
+//        self.inset = UIEdgeInsets(top: 0, left: 10, bottom: 0, right: 10)
     }
     func sectionController(_ sectionController: ListBindingSectionController<ListDiffable>, viewModelsFor object: Any) -> [ListDiffable] {
         guard let object = object as? Post2 else { fatalError() }
@@ -114,11 +130,11 @@ final class Post2SectionController :ListBindingSectionController<Post2>,ListBind
          switch viewModel {
 //         case is ImageViewModel:
 //            height = 50
-         case is Comment2: height = 35
+         case is Comment2: height = 180
          // 3
          default: height = 55
          }
-        return CGSize(width: width, height: height)
+        return CGSize(width: 400, height: height)
     }
     
 }

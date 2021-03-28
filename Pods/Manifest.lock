@@ -1,20 +1,39 @@
 PODS:
+  - Alamofire (4.9.1)
   - IGListDiffKit (4.0.0)
   - IGListKit (4.0.0):
     - IGListDiffKit (= 4.0.0)
+  - PromiseKit (6.13.1):
+    - PromiseKit/CorePromise (= 6.13.1)
+    - PromiseKit/Foundation (= 6.13.1)
+    - PromiseKit/UIKit (= 6.13.1)
+  - PromiseKit/Alamofire (6.13.1):
+    - Alamofire (~> 4.0)
+    - PromiseKit/CorePromise
+  - PromiseKit/CorePromise (6.13.1)
+  - PromiseKit/Foundation (6.13.1):
+    - PromiseKit/CorePromise
+  - PromiseKit/UIKit (6.13.1):
+    - PromiseKit/CorePromise
 
 DEPENDENCIES:
   - IGListKit (~> 4.0.0)
+  - PromiseKit (~> 6.8)
+  - PromiseKit/Alamofire (~> 6.0)
 
 SPEC REPOS:
   trunk:
+    - Alamofire
     - IGListDiffKit
     - IGListKit
+    - PromiseKit
 
 SPEC CHECKSUMS:
+  Alamofire: 85e8a02c69d6020a0d734f6054870d7ecb75cf18
   IGListDiffKit: 665d6cf43ce726e676013db9c7d6c4294259b6b2
   IGListKit: fd5a5d21935298f5849fa49d426843cff97b77c7
+  PromiseKit: 28fda91c973cc377875d8c0ea4f973013c05b6db
 
-PODFILE CHECKSUM: ed0b4f1f77c4a2d716c755bfe7566cb46f3b0afb
+PODFILE CHECKSUM: ed98f995495ab51c7e6ef2acd51f084f4551bc9b
 
 COCOAPODS: 1.10.0
