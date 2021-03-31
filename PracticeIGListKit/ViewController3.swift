@@ -8,6 +8,8 @@
 import UIKit
 import Alamofire
 import PromiseKit
+import RxSwift
+import RxCocoa
 
 class ViewController3: UIViewController,UICollectionViewDataSource{
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
@@ -89,21 +91,45 @@ class ViewController3: UIViewController,UICollectionViewDataSource{
         }
     }
     }
-    
+    let subject = BehaviorSubject(value: false)
+    let dis = DisposeBag()
 
     override func viewDidLoad() {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
+        let view2 = UIView(frame: CGRect(x: 0, y: 0, width: self.view.bounds.width, height: 50))
+        view2.backgroundColor = .white
+        let view3 = UIButton(frame: CGRect(x: 0, y: 0, width: 100, height: 50))
+        view3.rx.tap.subscribe{ [self] in
+            print("s")
+            if try! subject.value() {
+                print("sdd")
+                subject.onNext(false)
+            }else {
+                print("sd")
+                subject.onNext(true)
+            }
+        }.disposed(by: dis)
+        view3.backgroundColor = .purple
+        view2.addSubview(view3)
+        view.addSubview(view2)
         let layout = UICollectionViewFlowLayout()
         layout.itemSize = CGSize(width: 200, height: 200)
         layout.scrollDirection = .horizontal
-        let colletionView = UICollectionView(frame: CGRect(x: 0, y: 0, width: 300, height: 300), collectionViewLayout: layout)
+        let colletionView = UICollectionView(frame: CGRect(x: 0, y: 50, width: 300, height: 300), collectionViewLayout: layout)
         colletionView.backgroundColor = .darkGray
         colletionView.register(CollectionViewCell.self, forCellWithReuseIdentifier: "Cell")
         colletionView.dataSource  = self
         view.addSubview(colletionView)
+        let a = UIView(frame: CGRect(x: 100, y: 100, width: 200, height: 200))
+        subject.asObservable().filter {$0 == true}.subscribe{
+            print("d")
+            self.view.addSubview(a)
+        }.disposed(by: dis)
+        
     }
+
 
     /*
     // MARK: - Navigation
