@@ -7,7 +7,8 @@ target 'PracticeIGListKit' do
   pod 'IGListKit', '~> 4.0.0'
   pod 'PromiseKit', '~> 6.8'
   pod 'PromiseKit/Alamofire', '~> 6.0'
-
+  pod 'RxSwift'
+  pod 'RxCocoa'
   # Pods for PracticeIGListKit
 
 end

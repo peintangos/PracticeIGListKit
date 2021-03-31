@@ -15,11 +15,19 @@ PODS:
     - PromiseKit/CorePromise
   - PromiseKit/UIKit (6.13.1):
     - PromiseKit/CorePromise
+  - RxCocoa (6.1.0):
+    - RxRelay (= 6.1.0)
+    - RxSwift (= 6.1.0)
+  - RxRelay (6.1.0):
+    - RxSwift (= 6.1.0)
+  - RxSwift (6.1.0)
 
 DEPENDENCIES:
   - IGListKit (~> 4.0.0)
   - PromiseKit (~> 6.8)
   - PromiseKit/Alamofire (~> 6.0)
+  - RxCocoa
+  - RxSwift
 
 SPEC REPOS:
   trunk:
@@ -27,13 +35,19 @@ SPEC REPOS:
     - IGListDiffKit
     - IGListKit
     - PromiseKit
+    - RxCocoa
+    - RxRelay
+    - RxSwift
 
 SPEC CHECKSUMS:
   Alamofire: 85e8a02c69d6020a0d734f6054870d7ecb75cf18
   IGListDiffKit: 665d6cf43ce726e676013db9c7d6c4294259b6b2
   IGListKit: fd5a5d21935298f5849fa49d426843cff97b77c7
   PromiseKit: 28fda91c973cc377875d8c0ea4f973013c05b6db
+  RxCocoa: 5c51f02d562cbd94629f6c26cf0c80fe4ab8d343
+  RxRelay: 483e1a19fad961b41f0b0c0bee506f46c1ae14fe
+  RxSwift: a834e5c538e89eca0cae86f403f4fbf0336786ce
 
-PODFILE CHECKSUM: ed98f995495ab51c7e6ef2acd51f084f4551bc9b
+PODFILE CHECKSUM: 550c35978b339536adbe3c7518a3cc5345c78e1c
 
 COCOAPODS: 1.10.0
