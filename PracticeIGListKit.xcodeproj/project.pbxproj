@@ -18,6 +18,7 @@
 		0F006415260EE12E00EC29A2 /* TryKitViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F006414260EE12E00EC29A2 /* TryKitViewController.swift */; };
 		0F95F22C2615E86F00581303 /* ViewController5.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F95F22B2615E86F00581303 /* ViewController5.swift */; };
 		0F95F22F2615F92D00581303 /* ViewController6.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F95F22E2615F92D00581303 /* ViewController6.swift */; };
+		0F95F2342618082600581303 /* ViewController7.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F95F2332618082600581303 /* ViewController7.swift */; };
 		0FCCA0C52610A81F00874EDF /* ViewController3.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FCCA0C42610A81F00874EDF /* ViewController3.swift */; };
 		0FCCA0DD2614B85D00874EDF /* ViewController4.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FCCA0DC2614B85D00874EDF /* ViewController4.swift */; };
 		4EA806443AE69450CCCF1DC9 /* Pods_PracticeIGListKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AE6EEDDF28F7E39D0E5351A7 /* Pods_PracticeIGListKit.framework */; };
@@ -38,6 +39,7 @@
 		0F006414260EE12E00EC29A2 /* TryKitViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TryKitViewController.swift; sourceTree = "<group>"; };
 		0F95F22B2615E86F00581303 /* ViewController5.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController5.swift; sourceTree = "<group>"; };
 		0F95F22E2615F92D00581303 /* ViewController6.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController6.swift; sourceTree = "<group>"; };
+		0F95F2332618082600581303 /* ViewController7.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController7.swift; sourceTree = "<group>"; };
 		0FCCA0C42610A81F00874EDF /* ViewController3.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController3.swift; sourceTree = "<group>"; };
 		0FCCA0DC2614B85D00874EDF /* ViewController4.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController4.swift; sourceTree = "<group>"; };
 		6BA8755E508A61F17BE8FBF2 /* Pods-PracticeIGListKit.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PracticeIGListKit.release.xcconfig"; path = "Target Support Files/Pods-PracticeIGListKit/Pods-PracticeIGListKit.release.xcconfig"; sourceTree = "<group>"; };
@@ -91,6 +93,7 @@
 				0FCCA0DC2614B85D00874EDF /* ViewController4.swift */,
 				0F95F22B2615E86F00581303 /* ViewController5.swift */,
 				0F95F22E2615F92D00581303 /* ViewController6.swift */,
+				0F95F2332618082600581303 /* ViewController7.swift */,
 			);
 			path = PracticeIGListKit;
 			sourceTree = "<group>";
@@ -233,6 +236,7 @@
 				0FCCA0DD2614B85D00874EDF /* ViewController4.swift in Sources */,
 				0F95F22C2615E86F00581303 /* ViewController5.swift in Sources */,
 				0F0063F7260792E300EC29A2 /* SceneDelegate.swift in Sources */,
+				0F95F2342618082600581303 /* ViewController7.swift in Sources */,
 				0F006412260EDA4000EC29A2 /* UIViewController.swift in Sources */,
 				0FCCA0C52610A81F00874EDF /* ViewController3.swift in Sources */,
 				0F006415260EE12E00EC29A2 /* TryKitViewController.swift in Sources */,
