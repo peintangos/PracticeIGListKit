@@ -49,8 +49,36 @@ class ViewController6: UIViewController {
                 print(error)
             }
         }.disposed(by: disposeBag)
+        
+        progressBar = Bar(progressViewStyle: UIProgressView.Style.default)
+        progressBar = Bar(frame: CGRect(x: 0, y: 300, width: self.view.frame.width, height: 300))
+        self.view.addSubview(progressBar)
+        
+        countUp = UIButton(frame: CGRect(x: 0, y: 400, width: 100, height: 100))
+        countUp.backgroundColor = .red
+        countDown = UIButton(frame: CGRect(x: 100, y: 400, width: 100, height: 100))
+        countDown.backgroundColor = .purple
+        self.view.addSubview(countUp)
+        self.view.addSubview(countDown)
+        
+        let behavoirStepbarSubject = BehaviorSubject<Float>(value: 0)
+        
+        behavoirStepbarSubject.asObservable().bind(to: progressBar.rx.progress).disposed(by: disposeBag)
+        
+        countDown.rx.tap.subscribe{ [self] _ in
+//            RxをAnimationさせる方法が分からないので、一旦これで良いか。
+            progressBar.setProgress(progressBar.progress + 0.1, animated: true)
+        }.disposed(by: disposeBag)
+        
+        countUp.rx.tap.subscribe{ [self] _ in
+            behavoirStepbarSubject.onNext(progressBar.progress - 0.1)
+        }.disposed(by: disposeBag)
+        
+
     }
-    
+    var progressBar:Bar!
+    var countUp:UIButton!
+    var countDown:UIButton!
 
     /*
     // MARK: - Navigation
@@ -62,6 +90,14 @@ class ViewController6: UIViewController {
     }
     */
 
+}
+
+class Bar :UIProgressView{
+    override func setProgress(_ progress: Float, animated: Bool) {
+        UIView.animate(withDuration: 2) {
+            super.setProgress(progress, animated: animated)
+        }
+    }
 }
 class ViewModel2{
     let subject = BehaviorRelay<[LoginMessage]>(value: [LoginMessage]())
@@ -134,3 +170,10 @@ class A:BaseViewContrller<Param>{
 }
 
 var aaa = 0
+
+class StepbarManager {
+    // 自動的に遅延初期化される(初回アクセスのタイミングでインスタンス生成)
+    static let stepbarManager = StepbarManager()
+    // 外部からのインスタンス生成をコンパイルレベルで禁止
+    private init() {}
+}

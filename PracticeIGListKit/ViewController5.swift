@@ -23,6 +23,7 @@ class ViewController5: UIViewController,UICollectionViewDataSource {
     }
     
     var collectionView:UICollectionView!
+    var progressBar:UIProgressView!
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -33,9 +34,9 @@ class ViewController5: UIViewController,UICollectionViewDataSource {
         collectionView.dataSource = self
         collectionView.register(UICollectionViewCell.self, forCellWithReuseIdentifier: "Cell")
         self.view.addSubview(collectionView)
-        
-        
         setUp()
+    
+        
     }
     let viewModel = ViewModel()
     func setUp(){
